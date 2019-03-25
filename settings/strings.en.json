@@ -1,0 +1,24 @@
+{
+  "companyName": "Test Company",
+  "copyright": "Copyright © 2019",
+  "pitch": "Discover, purchase and manage the best software and services for your business. All in one place.",
+  "yes": "Yes",
+  "no": "No",
+  "next": "Next",
+  "previous": "Back",
+  "browse": {
+    "seoTitle": "Browse | Adattivo",
+    "seoDescription": "Browse"
+  },
+  "login": {
+    "seoTitle": "Log In | Adattivo",
+    "seoDescription": "Log In",
+    "loginError": "There was an error with your email/password combination. Please try again.",
+    "emailBlank": "A valid email is required.",
+    "pwBlank": "A minimum 6 character password is required."
+  },
+  "forgot-password": {
+    "seoTitle": "Forgot Password | Adattivo",
+    "seoDescription": "Resetting your password is easy on Adattivo."
+  }
+}

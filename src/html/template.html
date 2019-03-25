@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
+  <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>">
+  <% if (htmlWebpackPlugin.options.gtmId) { %>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','<%= htmlWebpackPlugin.options.gtmId %>');</script>
+    <!-- End Google Tag Manager -->
+  <% } %>
+  <link href="//use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="//stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <% for (var css in htmlWebpackPlugin.files.css) { %>
+  <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+  <% } %>
+</head>
+<body>
+  <% if (htmlWebpackPlugin.options.gtmId) { %>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= htmlWebpackPlugin.options.gtmId %>"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  <% } %>
+  <div id="app"></div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" defer></script>
+  <script type="text/javascript">
+    if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent))
+      document.write('<script src="//cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"><\/script>');
+  </script>
+  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+  <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>" defer></script>
+  <% } %>
+</body>
+</html>

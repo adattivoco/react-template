@@ -1,0 +1,7 @@
+{
+  "restEngine":"https://example.net",
+  "supportEmail": "hello@example.com",
+  "supportPhone": "720-552-8918",
+  "supportHours": "Mon-Fri 9-7 EST",
+  "supportSite": "http://help.example.com"
+}

@@ -1,0 +1,66 @@
+@import mixins
+
+div.header
+  position: relative
+  background-color: $lightest-gray
+  &.sticky
+    position: fixed
+    width: 100%
+    z-index: 12
+    top: 0
+  div.header-inner
+    display: flex
+    justify-content: space-between
+    align-items: center
+    min-height: 75px
+    +width-limit
+    padding: 0
+    @media (max-width: 767px)
+      min-height: 60px
+    div.logo-col
+      margin-right: 50px
+      a
+        font-size: 32px
+        font-weight: bold
+        font-style: italic
+        color: $black
+      img
+        height: 50px
+        @media (max-width: 767px)
+          height: 40px
+    div.links-col
+      display: flex
+      justify-content: flex-start
+      align-items: center
+      width: 100%
+      a
+        color: $dark-gray
+        font-weight: 500
+        font-size: 16px
+        margin-right: 40px
+        padding-top: 29px
+        padding-bottom: 24px
+        border-bottom: 4px solid $lightest-gray
+        transition : border 500ms ease-out
+        line-height: 16px
+        height: 75px
+        &:hover, &:active, &:focus
+          text-decoration: none
+          cursor: pointer
+          color: $black
+          border-color: $dark-gray
+        &.selected
+          border-color: $dark-gray
+    div.actions-col
+      display: flex
+      justify-content: flex-start
+      align-items: center
+      .btn
+        margin-left: 25px
+      div.menu-icon-span
+        display: none
+        @media (max-width: 991px)
+          margin-left: 30px
+          display: block
+        i
+          font-size: 24px

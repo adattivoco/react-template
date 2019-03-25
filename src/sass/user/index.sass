@@ -1,0 +1,20 @@
+@import mixins
+
+.signup-wrap
+  padding: 2em
+  .form-pane
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    width: 100%
+    .form-group
+      width: 49%
+      label
+        font-weight: 400
+    &.thirds
+      .form-group
+        width: 32%
+  form#signupVerifyForm
+    .form-pane
+      .form-group
+        width: 350px
