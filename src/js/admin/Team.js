@@ -128,12 +128,13 @@ export default class Team extends React.Component {
                 <Loading />
               :
                 users.map((admin, key) => {
+                  const lastSignin = admin.lastSignInAt||admin.last_sign_in_at;
                   return (
                     <div key={key} class="row admin-row">
                       <div class="col-xs-3">{`${admin.firstName} ${admin.lastName}`}</div>
                       <div class="col-xs-4">{admin.email}</div>
-                      <div class="col-xs-2">{admin.signInCount}</div>
-                      <div class="col-xs-2">{admin.lastSignInAt ? formatDate(admin.lastSignInAt, 'mm/dd/yy hh:MM tt') : "n/a"}</div>
+                      <div class="col-xs-2">{admin.signInCount || admin.sign_in_count || 0}</div>
+                      <div class="col-xs-2">{lastSignin ? formatDate(lastSignin, 'mm/dd/yy hh:MM tt') : 'n/a'}</div>
                       <div class="col-xs-1">
                         {users.length > 1 && user.email !== admin.email &&
                           <button class="btn btn-sm btn-primary" onClick={this.removeAdmin.bind(this,admin.id)}>x</button>
