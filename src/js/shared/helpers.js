@@ -12,27 +12,25 @@ export function setSEOSettings(page) {
       document.querySelector('meta[name="keywords"]').setAttribute('content', seoSettings.seoKeywords)
     }
     return true
-  } else {
-    return false
   }
+  return false
 }
 export function formatDate(date, format) {
   return dateFormat(date, format)
 }
 export function getQueryParams() {
-  var queryParams = window.location.search.substr(1).split('&').reduce((q, query) => {
-    var chunks = query.split('=')
-    var key = chunks[0]
-    var value = chunks[1]
+  const queryParams = window.location.search.substr(1).split('&').reduce((q, query) => {
+    const chunks = query.split('=')
+    const key = chunks[0]
+    const value = chunks[1]
     if (key.indexOf('[]') >= 0) {
       if (!q[key]) {
         q[key] = []
       }
       q[key].push(value)
       return (q[key], q)
-    } else {
-      return (q[key] = value, q)
     }
+    return (q[key] = value, q)
   }, {})
   return queryParams
 }

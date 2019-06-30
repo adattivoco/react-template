@@ -14,12 +14,14 @@ export default (state = initialState, action) => {
         ...state,
         loading: true,
         error: null,
-        resetSuccess: false}
+        resetSuccess: false
+      }
     case 'AUTH_REJECTED':
       return {
         ...state,
         loading: false,
-        error: action.message}
+        error: action.message
+      }
     case 'AUTHENTICATION_ERROR':
       sessionStorage.clear()
       history.push('/login')
@@ -31,15 +33,16 @@ export default (state = initialState, action) => {
         token: null
       }
     case 'LOGIN_FULFILLED':
-      const {user,token} = action.payload
+      const { user, token } = action.payload
       sessionStorage.setItem('userObject', JSON.stringify(user))
       sessionStorage.setItem('tokenObject', token)
       return {
         ...state,
         loading: false,
         error: null,
-        user: user,
-        token: token}
+        user,
+        token
+      }
     case 'LOGOUT_FULFILLED':
       sessionStorage.clear()
       history.push('/login')
@@ -48,20 +51,23 @@ export default (state = initialState, action) => {
         loading: false,
         error: null,
         user: null,
-        token: null}
+        token: null
+      }
     case 'REQUEST_RESET_FULFILLED':
       return {
         ...state,
         loading: false,
         error: null,
-        user: null}
+        user: null
+      }
     case 'RESET_PW_FULFILLED':
       return {
         ...state,
         loading: false,
         error: null,
         user: null,
-        resetSuccess: true}
+        resetSuccess: true
+      }
     case 'CREATE_USER_FULFILLED': {
       sessionStorage.setItem('userObject', JSON.stringify(action.payload))
       return {

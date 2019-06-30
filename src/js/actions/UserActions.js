@@ -4,7 +4,7 @@ export const getAdmins = () => (dispatch) => {
   restCall({
     url: '/users/',
     method: 'GET',
-    data: {admin: 'true'},
+    data: { admin: 'true' },
     startType: 'USER_PENDING',
     successType: 'USERS_FULFILLED',
     errorType: 'USER_REJECTED',
@@ -14,15 +14,15 @@ export const getAdmins = () => (dispatch) => {
 }
 
 export const addAdmin = (firstName, lastName, email) => (dispatch) => {
-  var clientURL = location.protocol + '//' + location.host + '/resetpassword'
+  const clientURL = `${location.protocol}//${location.host}/resetpassword`
   restCall({
     url: '/users/admin',
     method: 'POST',
     data: {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      clientURL: clientURL
+      firstName,
+      lastName,
+      email,
+      clientURL
     },
     startType: 'USER_PENDING',
     successType: 'USERS_FULFILLED',
@@ -32,9 +32,9 @@ export const addAdmin = (firstName, lastName, email) => (dispatch) => {
   })
 }
 
-export const removeAdmin = (id) => (dispatch) => {
+export const removeAdmin = id => (dispatch) => {
   restCall({
-    url: '/users/' + id,
+    url: `/users/${id}`,
     method: 'DELETE',
     startType: 'USER_PENDING',
     successType: 'USERS_FULFILLED',

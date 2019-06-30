@@ -1,19 +1,19 @@
 import axios from 'axios'
-import store from '../store'
 import settings from 'Settings'
+import store from '../store'
 
 // configure base url
 const instance = axios.create({
   baseURL: settings.restEngine,
   headers: {
-    'Accept': 'application/json',
+    Accept: 'application/json',
     'Content-Type': 'application/json'
   }
 })
 
 // intercept requests and add authorization token
 instance.interceptors.request.use((config) => {
-  const token = store.getState().auth.token
+  const { token } = store.getState().auth
   if (token) {
     config.headers.authorization = `Bearer ${token}`
   }
@@ -21,14 +21,16 @@ instance.interceptors.request.use((config) => {
 })
 
 export default function restCall(params) {
-	const {url, method, data, startType, successType,
-         errorType, authType, dispatch} = params
+  const {
+    url, method, data, startType, successType,
+    errorType, authType, dispatch
+  } = params
   if (startType) {
     dispatch({ type: startType })
   }
-  var axVars = {
-    url: url,
-    method: method
+  const axVars = {
+    url,
+    method
   }
   if (method === 'DELETE' || method === 'GET') {
     axVars.params = data || {}
@@ -36,16 +38,16 @@ export default function restCall(params) {
     axVars.data = data || {}
   }
   return instance(axVars)
-    .then(resp => {
+    .then((resp) => {
       dispatch({ type: successType, payload: resp.data })
-    }).catch(error => {
+    }).catch((error) => {
       if (error.response) {
         switch (error.response.status) {
           case 401:
             dispatch({
               type: authType || errorType,
-              message: error.response.data.message ||
-                       'User not authorized to perform this function. Please log in again.'
+              message: error.response.data.message
+                       || 'User not authorized to perform this function. Please log in again.'
             })
             break
           default:

@@ -10,12 +10,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: null}
+        error: null
+      }
     case 'USER_REJECTED':
       return {
         ...state,
         loading: false,
-        error: action.message}
+        error: action.message
+      }
     case 'USER_FULFILLED':
       return {
         ...state,

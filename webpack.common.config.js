@@ -2,7 +2,7 @@ const webpack = require('webpack'),
       path = require('path'),
       env = process.env.NODE_ENV || 'development',
       HtmlWebpackPlugin = require('html-webpack-plugin'),
-      CleanWebpackPlugin = require('clean-webpack-plugin');
+      {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 var settings = require('./settings/settings.' + env + '.json');
 const i18n = {

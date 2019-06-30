@@ -21,7 +21,7 @@ export const logout = () => (dispatch) => {
   })
 }
 
-export const signup = (data) => (dispatch) => {
+export const signup = data => (dispatch) => {
   restCall({
     url: '/users',
     method: 'POST',
@@ -37,7 +37,7 @@ export const verifyEmail = (id, code) => (dispatch) => {
   restCall({
     url: `/users/${id}/verify`,
     method: 'POST',
-    data: {code},
+    data: { code },
     startType: 'AUTH_PENDING',
     successType: 'VERIFY_CODE_FULFILLED',
     errorType: 'AUTH_REJECTED',
@@ -45,9 +45,9 @@ export const verifyEmail = (id, code) => (dispatch) => {
   })
 }
 
-export const verifyResend = (id) => (dispatch) => {
+export const verifyResend = id => (dispatch) => {
   restCall({
-    url:`/users/${id}/verify`,
+    url: `/users/${id}/verify`,
     method: 'PUT',
     startType: 'AUTH_PENDING',
     successType: 'VERIFY_RESEND_FULFILLED',
@@ -60,7 +60,7 @@ export const resetPW = (token, password) => (dispatch) => {
   restCall({
     url: '/auth/forgot-password',
     method: 'PUT',
-    data: {token, password},
+    data: { token, password },
     startType: 'AUTH_PENDING',
     successType: 'RESET_PW_FULFILLED',
     errorType: 'AUTH_REJECTED',
@@ -68,11 +68,11 @@ export const resetPW = (token, password) => (dispatch) => {
   })
 }
 
-export const requestReset = (email, clientURL) => (dispatch) =>  {
+export const requestReset = (email, clientURL) => (dispatch) => {
   restCall({
     url: '/auth/forgot-password',
     method: 'POST',
-    data: {email, clientURL},
+    data: { email, clientURL },
     startType: 'AUTH_PENDING',
     successType: 'REQUEST_RESET_FULFILLED',
     errorType: 'AUTH_REJECTED',
