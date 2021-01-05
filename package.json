@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "main": "webpack.config.js",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "dateformat": "^3.0.3",
     "history": "^4.9.0",
     "js-cookie": "^2.2.0",
